@@ -8,6 +8,7 @@ import {useUserStore} from "../stores/User.js";
 import NewPost from "@/components/page/NewPost.vue";
 import PostDetail from "@/components/page/PostDetail.vue";
 import UpdatePost from "@/components/page/UpdatePost.vue";
+import Outbox from "@/components/page/Outbox.vue";
 
 
 const router = createRouter({
@@ -40,6 +41,12 @@ const router = createRouter({
       path: '/inbox',
       name: 'Inbox',
       component: Inbox,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/outbox',
+      name: 'OutBox',
+      component: Outbox,
       meta: { requiresAuth: true }
     },
     {

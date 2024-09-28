@@ -44,8 +44,17 @@
 
     <router-link to="/inbox">
       <q-expansion-item
-          icon="drafts"
+          icon="move_to_inbox"
           label="수신함"
+          class="items-center text-weight-bold smallLetter"
+      >
+      </q-expansion-item>
+    </router-link>
+
+    <router-link to="/outbox">
+      <q-expansion-item
+          icon="outgoing_mail"
+          label="발신함"
           class="items-center text-weight-bold smallLetter"
       >
       </q-expansion-item>
