@@ -111,7 +111,7 @@ const fetchPosts = async () => {
         params: param
       })
   const postResult = result.data.data.content;
-  console.log(postResult)
+  console.log(result.data.data)
   maxPage.value = result.data.data.totalPages;
 
   const convertedPosts = [];
@@ -124,7 +124,8 @@ const fetchPosts = async () => {
         data.createdAt,
         data.bookmarked,
         data.commentCount,
-        data.emojiResponseDtos
+        data.emojiResponseDtos,
+        data.receiversName
     );
     convertedPosts.push(postData);
   })

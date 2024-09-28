@@ -68,7 +68,9 @@ const props = defineProps({
   bookmarked: Boolean,
   content: String,
   commentsCount: Number,
-  emojiResponse: Array
+  emojiResponse: Array,
+  receiversName: Array,
+  type: String
 });
 
 const emojiList = reactive([]);
@@ -78,7 +80,7 @@ const userStore = useUserStore();
 const router = useRouter();
 
 const moveDetailPage = () => {
-  router.push(`/posts/${props.id}`);
+  router.push(`/posts/sent/${props.id}`);
 }
 
 const handleEmojiSelected = (emoji) => {

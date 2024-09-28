@@ -9,6 +9,7 @@ import NewPost from "@/components/page/NewPost.vue";
 import PostDetail from "@/components/page/PostDetail.vue";
 import UpdatePost from "@/components/page/UpdatePost.vue";
 import Outbox from "@/components/page/Outbox.vue";
+import SentPostDetail from "@/components/page/SentPostDetail.vue";
 
 
 const router = createRouter({
@@ -53,6 +54,12 @@ const router = createRouter({
       path: '/posts/:id',
       name: 'PostDetail',
       component: PostDetail,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/posts/sent/:id',
+      name: 'SentPostDetail',
+      component: SentPostDetail,
       meta: { requiresAuth: true }
     },
     {

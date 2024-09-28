@@ -4,7 +4,7 @@ import {useUserStore} from "@/stores/User.js";
 
 export class PostDetail {
 
-    constructor(id, title, content, category, status, expiredDate, userId, username, createdAt, bookmarked, comments, emojiResponses) {
+    constructor(id, title, content, category, status, expiredDate, userId, username, createdAt, bookmarked, comments, emojiResponses, receiversName) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -21,6 +21,7 @@ export class PostDetail {
         this.emojis = emojiResponses.map(
             dto => new EmojiResponse(dto.emoji, dto.totalCount, dto.usernames)
         );
+        this.receiversName = receiversName;
     }
 
 }

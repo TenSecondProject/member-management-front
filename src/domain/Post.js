@@ -2,7 +2,7 @@ import EmojiResponse from "../domain/EmojiResponse.js";
 
 export class Post {
 
-    constructor(id, title, content, status, writtenBy, createdAt, bookmarked, commentCount, emojiResponse) {
+    constructor(id, title, content, status, writtenBy, createdAt, bookmarked, commentCount, emojiResponse, receviers) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -14,6 +14,7 @@ export class Post {
         this.emojiResponse = emojiResponse.map(
             dto => new EmojiResponse(dto.emoji, dto.totalCount, dto.usernames)
         );
+        this.receivers = receviers;
     }
 
     translateStatusInKorean(status) {
