@@ -204,7 +204,7 @@ const moveUpdatePage = () => {
 }
 
 const doesPostContainExpiredDate = computed(() => {
-  return post.expiredDate !== ''  && post.expiredDate !== undefined  && post.expiredDate !== null;
+  return post.value.expiredDate !== ''  && post.value.expiredDate !== undefined  && post.value.expiredDate !== null;
 })
 
 </script>

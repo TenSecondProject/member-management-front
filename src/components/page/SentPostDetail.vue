@@ -129,7 +129,6 @@ const assignDataInPost = (data) => {
       data.emojiResponseDtos,
       data.receiversName
   );
-  console.log(post.value)
 }
 
 const handleEmojiSelected = (emoji) => {

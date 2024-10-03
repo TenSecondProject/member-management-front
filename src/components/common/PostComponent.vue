@@ -80,7 +80,10 @@ const userStore = useUserStore();
 const router = useRouter();
 
 const moveDetailPage = () => {
-  router.push(`/posts/sent/${props.id}`);
+  if (props.type === "sentPost") {
+    router.push(`/posts/sent/${props.id}`);
+  }
+  router.push(`/posts/${props.id}`);
 }
 
 const handleEmojiSelected = (emoji) => {

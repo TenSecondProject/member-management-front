@@ -1,10 +1,7 @@
 <template>
   <div>
     <div class="row items-center justify-between bg-grey-5 rounded-borders">
-      <div class="row items-center">
-        <div class="q-pa-md text-h6 text-weight-bold">[ 공지사항 ]</div>
-        <div class="q-ml-xl">달력에 체크할 떄, 언어 꼭 써주세요</div>
-      </div>
+      <MainAnnouncement/>
       <LogoutButton/>
     </div>
 
@@ -43,6 +40,7 @@
           :content="post.content"
           :commentsCount="post.commentCount"
           :emojiResponse="post.emojiResponse"
+          type="post"
       />
     </div>
     <!-- 페이지네이션-->
@@ -67,6 +65,7 @@ import StatusButtonGroup from "../../components/common/StatusButtonGroup.vue";
 import SearchBar from "../../components/common/SearchBar.vue";
 import globalAxios from "../../axios/axios.js";
 import {Post} from "@/domain/Post.js";
+import MainAnnouncement from "@/components/common/MainAnnouncement.vue";
 
 const headerStore = useHeaderStore();
 headerStore.setBannerName("수신함");

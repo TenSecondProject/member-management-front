@@ -186,11 +186,10 @@ const submit = async () => {
   if (targetPostCategory.value === "DELIVERY") {
     requestBody.sendTargetUserIds = [];
     targetReceivers.value.forEach(r => {requestBody.sendTargetUserIds.push(r.userId)});
-  }
-
-  if (requestBody.sendTargetUserIds.length === 0) {
-    alert("한 명 이상의 전송대상은 필수입니다.");
-    return;
+    if (requestBody.sendTargetUserIds.length === 0) {
+      alert("한 명 이상의 전송대상은 필수입니다.");
+      return;
+    }
   }
 
   const response = await globalAxios.post(

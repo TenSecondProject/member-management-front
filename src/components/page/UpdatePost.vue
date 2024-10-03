@@ -68,6 +68,9 @@
           <div>
             <q-checkbox v-model="isDone" label="완료" />
           </div>
+          <div v-if="isAbleToChangeMainPost">
+            <q-checkbox v-model="doesChangeMainPost" label="공지" />
+          </div>
         </div>
       </div>
 <!--      제목-->
@@ -106,7 +109,7 @@
 </template>
 
 <script setup>
-import {onBeforeMount, onMounted, reactive, ref} from "vue";
+import {computed, onBeforeMount, onMounted, reactive, ref} from "vue";
 import {date} from "quasar";
 import globalAxios from "@/axios/axios.js";
 import {useRoute, useRouter} from "vue-router";
@@ -129,6 +132,7 @@ const expiredDate = ref(date.formatDate(Date.now(), 'YYYY-MM-DD HH:mm'));
 const doesExpiredDateExist = ref(false);
 const post = ref(JSON.parse(history.state.post));
 const isDone = ref(post.value.status === "COMPLETE");
+const doesChangeMainPost = ref(false);
 
 function assignPostCategory() {
   if (post.value.category === postCategories[0].value) {
@@ -187,6 +191,7 @@ const submit = async () => {
     )
     const responseStatusCode = response.data.statusCode;
     if (responseStatusCode === 200) {
+      await globalAxios.put(`/api/v1/posts/main/${post.value.id}`);
       await router.push("/");
     }
     else {
@@ -198,6 +203,11 @@ const submit = async () => {
   }
 
 }
+
+const isAbleToChangeMainPost = computed(() => {
+  const userInfo = userStore.parseAccessToken();
+  return post.value.category === "ANNOUNCEMENT" && userInfo.roles.includes("ROLE_MANAGER");
+})
 
 </script>
 
