@@ -29,7 +29,8 @@
     </div>
 
     <!-- 게시글기능 -->
-    <div v-if="posts" v-for="post in posts" v-bind:key="post.id" class="q-mt-lg" >
+    <div v-if="isEmptyPost" class="text-weight-bold absolute-center">검색 결과가 없습니다.</div>
+    <div v-if="posts && !isEmptyPost" v-for="post in posts" v-bind:key="post.id" class="q-mt-lg" >
       <PostComponent
           :id="post.id"
           :title="post.title"
@@ -44,7 +45,7 @@
       />
     </div>
     <!-- 페이지네이션-->
-    <div v-if="posts" class="q-pt-sm flex flex-center">
+    <div v-if="posts && !isEmptyPost" class="q-pt-sm flex flex-center">
       <q-pagination
           v-model="currentPage"
           :max="maxPage"
@@ -77,6 +78,7 @@ headerStore.setBannerName("Home");
 const currentPage = ref(1);
 const maxPage = ref(1);
 const posts = ref(null);
+const isEmptyPost = ref(false);
 
 // be emitted data
 let orderStandard = reactive({});
@@ -131,6 +133,9 @@ const fetchPosts = async () => {
     convertedPosts.push(postData);
   })
   posts.value = convertedPosts;
+  if (posts.value.length === 0) {
+    isEmptyPost.value = true;
+  }
 }
 
 fetchPosts();
