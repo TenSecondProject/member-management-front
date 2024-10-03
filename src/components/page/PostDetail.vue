@@ -1,6 +1,7 @@
 <template>
   <div class="q-gutter-md row justify-center q-pt-xl">
-    <q-card v-if="post" flat class="custom-rounded post-detail-card-container">
+    <div v-if="!isExistPost" class="text-weight-bold absolute-center">존재하지 않거나, 삭제된 게시물입니다.</div>
+    <q-card v-if="post && isExistPost" flat class="custom-rounded post-detail-card-container">
       <!--      카드 헤더-->
       <q-card-section class="row items-center justify-between">
         <!-- 좌측 -->
@@ -96,6 +97,7 @@ const userStore = useUserStore();
 const userInfo = userStore.parseAccessToken();
 
 const post = ref(null);
+const isExistPost = ref(false);
 
 const commentInput = ref('');
 
@@ -104,8 +106,14 @@ onMounted(() => {
 })
 
 const fetchPostDetail = async () => {
-  const response = await globalAxios.get(`/api/v1/posts/${route.params.id}`);
-  await assignDataInPost(response.data.data);
+  try {
+    const response = await globalAxios.get(`/api/v1/posts/${route.params.id}`);
+    await assignDataInPost(response.data.data);
+    isExistPost.value = true;
+  } catch (e) {
+    console.log(e);
+    isExistPost.value = false;
+  }
 }
 
 const assignDataInPost = (data) => {
