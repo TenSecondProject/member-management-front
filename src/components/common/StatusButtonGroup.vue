@@ -28,11 +28,10 @@ const props = defineProps({
 
 const selectedStatuses = reactive([]);
 const statuses = [
-  {name: '미완료', searchValue: 'UNCOMPLETED', searchGroup: 'status', activeColor: 'deep-orange', inactiveColor: 'grey-5'},
   {name: '진행중', searchValue: 'IN_PROGRESS', searchGroup: 'status', activeColor: 'deep-orange', inactiveColor: 'grey-5'},
   {name: '완료', searchValue: 'COMPLETE', searchGroup: 'status', activeColor: 'deep-orange', inactiveColor: 'grey-5'},
   {name: '공지', searchValue: 'ANNOUNCEMENT', searchGroup: 'category', activeColor: 'deep-orange', inactiveColor: 'grey-5'},
-  {name: '기타', searchValue: 'ETC', searchGroup: 'category', activeColor: 'deep-orange', inactiveColor: 'grey-5'}
+  {name: '전달', searchValue: 'DELIVERY', searchGroup: 'category', activeColor: 'deep-orange', inactiveColor: 'grey-5'}
 ];
 
 

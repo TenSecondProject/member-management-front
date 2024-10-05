@@ -136,9 +136,7 @@ const fetchPosts = async () => {
     convertedPosts.push(postData);
   })
   posts.value = convertedPosts;
-  if (posts.value.length === 0) {
-    isEmptyPost.value = true;
-  }
+  isEmptyPost.value = posts.value.length === 0
 }
 
 onMounted(() => {

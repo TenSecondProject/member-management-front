@@ -51,7 +51,7 @@ async function refreshUserTokens() {
     try {
         const refreshTokenKey = userStore.getRefreshToken().uuid;
         const response = await axios.put(
-            'http://localhost:8080/api/v1/users/token/refresh',
+            import.meta.env.VITE_SERVER_BASE_URL + '/api/v1/users/token/refresh',
             {},
             {
                 headers: {
