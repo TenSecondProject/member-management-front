@@ -82,6 +82,7 @@ const router = useRouter();
 const moveDetailPage = () => {
   if (props.type === "sentPost") {
     router.push(`/posts/sent/${props.id}`);
+    return;
   }
   router.push(`/posts/${props.id}`);
 }
