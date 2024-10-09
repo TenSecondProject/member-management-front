@@ -191,7 +191,7 @@ const submit = async () => {
     )
     const responseStatusCode = response.data.statusCode;
     if (responseStatusCode === 200) {
-      if (doesChangeMainPost) {
+      if (doesChangeMainPost.value === true) {
         await globalAxios.put(`/api/v1/posts/main/${post.value.id}`);
       }
       await router.push("/");
