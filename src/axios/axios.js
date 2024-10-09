@@ -55,7 +55,11 @@ async function refreshUserTokens() {
             {},
             {
                 headers: {
-                    "refresh": refreshTokenKey
+                    "refresh": refreshTokenKey,
+                    "Access-Control-Allow-Origin": import.meta.env.VITE_BASE_URL,
+                    "Access-Control-Allow-Credentials": true,
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
                 }
             }
         );
